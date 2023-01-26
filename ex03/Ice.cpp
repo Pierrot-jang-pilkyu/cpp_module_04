@@ -18,12 +18,12 @@ Ice &Ice::operator=(const Ice &obj)
 
 Ice::~Ice(void) {}
 
-AMateria *Ice::clone() const
+AMateria* Ice::clone() const
 {
 	return (new Ice());
 }
 
 void Ice::use(ICharacter &target)
 {
-	std::cout << "Ice: \"* shoots an ice bolt at " << target.name << "*\"\n";
+	std::cout << "Ice: \"* shoots an ice bolt at " << target.getName() << "*\"\n";
 }

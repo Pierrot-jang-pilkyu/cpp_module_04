@@ -18,12 +18,12 @@ Cure &Cure::operator=(const Cure &obj)
 
 Cure::~Cure(void) {}
 
-AMateria *Cure::clone() const
+AMateria* Cure::clone() const
 {
 	return (new Cure());
 }
 
 void Cure::use(ICharacter &target)
 {
-	std::cout << "Cure: \"* heals " << target.name << "’s wounds *\"\n";
+	std::cout << "Cure: \"* heals " << target.getName() << "’s wounds *\"\n";
 }

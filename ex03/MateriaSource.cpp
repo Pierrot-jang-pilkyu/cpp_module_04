@@ -18,6 +18,7 @@ MateriaSource &MateriaSource::operator=(const MateriaSource &obj)
 	{
 		this->materia_source[i] = obj.materia_source[i];
 	}
+	return (*this);
 }
 
 MateriaSource::~MateriaSource(void) {}
@@ -36,11 +37,14 @@ void MateriaSource::learnMateria(AMateria *m)
 
 AMateria *MateriaSource::createMateria(std::string const &type)
 {
-	for (int i = 0; i < 4; ++i)
+	int i = 0;
+
+	for (; i < 4; ++i)
 	{
 		if (this->materia_source[i]->getType().compare(type) == 0)
 		{
-			return (this->materia_source[i]);
+			break ;
 		}
 	}
+	return (this->materia_source[i]);
 }

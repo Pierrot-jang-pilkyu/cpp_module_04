@@ -1,6 +1,5 @@
 #ifndef CHARACTER_HPP
 # define CHARACTER_HPP
-# include "AMateria.hpp"
 # include "ICharacter.hpp"
 
 class Character : public ICharacter

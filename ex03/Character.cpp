@@ -4,7 +4,7 @@ Character::Character(void)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		this->inventory[i] = new AMateria();
+		this->inventory[i] = NULL;
 	}
 	this->name = "No name";
 }
@@ -13,7 +13,7 @@ Character::Character(std::string const &_name)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		this->inventory[i] = new AMateria();
+		this->inventory[i] = NULL;
 	}
 	this->name = _name;
 }
@@ -27,8 +27,10 @@ Character &Character::operator=(const Character &obj)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		delete this->inventory[i];
-		this->inventory[i] = new AMateria(obj.inventory[i]);
+		if (obj.inventory[i] != NULL)
+			this->inventory[i] = obj.inventory[i];
+		else
+			this->inventory[i] = NULL;
 	}
 	this->name = obj.name;
 	return (*this);
@@ -51,10 +53,9 @@ void Character::equip(AMateria* m)
 {
 	for (int i = 0; i < 4; ++i)
 	{
-		std::string temp = this->inventory[i]->getType();
-		if (temp.compare("default") == 0)
+		if (this->inventory[i] == NULL)
 		{
-			this->inventory[i]->setType(m->getType());
+			this->inventory[i] = m;
 			break ;
 		}
 	}
@@ -67,7 +68,7 @@ void Character::unequip(int idx)
 		std::cout << "this idx isn't exist.\n";
 		return ;
 	}
-	this->inventory[idx]->setType("defualt");
+	this->inventory[idx] = NULL;
 }
 
 void Character::use(int idx, ICharacter &target)
@@ -77,5 +78,6 @@ void Character::use(int idx, ICharacter &target)
 		std::cout << "this idx isn't exist.\n";
 		return ;
 	}
-	this->inventory[idx]->use(target);
+	if (this->inventory[idx] != NULL)
+		this->inventory[idx]->use(target);
 }

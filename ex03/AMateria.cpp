@@ -1,8 +1,14 @@
 #include "AMateria.hpp"
 
-AMateria::AMateria(void) : type("default") {}
+AMateria::AMateria(void)
+{
+	this->type = "default";
+}
 
-AMateria::AMateria(std::string const &type) : type(type) {}
+AMateria::AMateria(std::string const &type)
+{
+	this->type = type;
+}
 
 AMateria::AMateria(const AMateria &obj)
 {
@@ -29,5 +35,5 @@ std::string const &AMateria::getType() const
 
 void AMateria::use(ICharacter &target)
 {
-	std::cout << this->type << " has not motion.\n";
+	std::cout << target.getName() << this->type << " has not motion.\n";
 }
