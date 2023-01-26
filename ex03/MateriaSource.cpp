@@ -43,8 +43,8 @@ AMateria *MateriaSource::createMateria(std::string const &type)
 	{
 		if (this->materia_source[i]->getType().compare(type) == 0)
 		{
-			break ;
+			return (this->materia_source[i]);
 		}
 	}
-	return (this->materia_source[i]);
+	return (NULL);
 }
